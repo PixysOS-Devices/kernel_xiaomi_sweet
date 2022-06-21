@@ -67,6 +67,8 @@ static int set_cpu_min_freq(const char *buf, const struct kernel_param *kp)
 
 	if (is_battery_saver_on())
 		cp = disable;
+	if (kp_active_mode() == 1)
+	  return 0;
 
 	while ((cp = strpbrk(cp + 1, " :")))
 		ntokens++;
